@@ -1,5 +1,6 @@
 # C言語インターナル
 
+* 原文: [C Internals](http://www.avabodh.com/cin/cin.html)
 
 ## 目次
 
