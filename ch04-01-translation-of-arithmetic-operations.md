@@ -76,6 +76,6 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 * [目次](/SUMMARY.md)
 
-* [スタックとローカル変数](/ch03-01-stack-and-local-variables.md)
+* [前へ](/ch03-01-stack-and-local-variables.md)
 
-* [ビット演算の翻訳](/ch05-01-translation-of-bitdddwise-operations.md)
+* [次へ](/ch05-01-translation-of-bitdddwise-operations.md)

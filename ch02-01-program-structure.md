@@ -89,6 +89,6 @@ main:
 
 * [目次](/SUMMARY.md)
 
-* [はじめに](/ch01-01-introduction.md)
+* [前へ](/ch01-01-introduction.md)
 
-* [スタックとローカル変数](/ch03-01-stack-and-local-variables.md)
+* [次へ](/ch03-01-stack-and-local-variables.md)

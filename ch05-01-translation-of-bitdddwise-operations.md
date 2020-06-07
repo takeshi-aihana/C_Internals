@@ -75,6 +75,6 @@
 
 * [目次](/SUMMARY.md)
 
-* [算術演算の翻訳](/ch04-01-translation-of-arithmetic-operations.md)
+* [前へ](/ch04-01-translation-of-arithmetic-operations.md)
 
-* [分岐処理の翻訳](/ch06-01-translation-of-branch-statement.md)
+* [次へ](/ch06-01-translation-of-branch-statement.md)
