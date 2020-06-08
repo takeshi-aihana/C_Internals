@@ -22,7 +22,7 @@
 
 これが生成したアセンブリ言語のコードです：
 
-```Unix Assembly
+```asm
 	movl	$4, -4(%ebp)
 	movl	$8, -8(%ebp)
 	movl	-8(%ebp), %eax
@@ -37,7 +37,7 @@
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # a = 4
 	movl	$4, -4(%ebp)
 

@@ -58,7 +58,7 @@ fun:
 
 次に、``gcc`` が生成した実際のアセンブリ言語のコードを見てみることにしましょう：
 
-```Unix Assembly
+```asm
 fun:
 	pushl	%ebp
 	movl	%esp, %ebp
@@ -71,7 +71,7 @@ fun:
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # fun 関数の先頭
 fun:
 
