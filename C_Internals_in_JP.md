@@ -68,7 +68,7 @@ CPU がこれらの命令を実行し、データを処理します。
 
 次に、このプログラム用に生成した実際のアセンブリ言語のコードを見てみることにしましょう：
 
-```Unix Assembly
+```asm
         .comm   globalVar,4,4
         .text
 .globl main
@@ -83,7 +83,7 @@ main:
 
 このコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # これがグローバル変数の宣言
 # .comm は初期化していないデータを宣言するための識別子
 # アセンブラは .bss セグメントの中に、ここに示したサイズの領域を確保する
@@ -189,7 +189,7 @@ fun:
 
 次に、``gcc`` が生成した実際のアセンブリ言語のコードを見てみることにしましょう：
 
-```Unix Assembly
+```asm
 fun:
 	pushl	%ebp
 	movl	%esp, %ebp
@@ -202,7 +202,7 @@ fun:
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # fun 関数の先頭
 fun:
 
@@ -267,7 +267,7 @@ fun:
 
 これが生成したアセンブリ言語のコードです：
 
-```Unix Assembly
+```asm
 	movl	$2, -4(%ebp)
 	movl	$3, -8(%ebp)
 	movl	$24, -12(%ebp)
@@ -288,7 +288,7 @@ fun:
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # a = 2
 	movl	$2, -4(%ebp)
 # b = 3
@@ -310,7 +310,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 上のコメントでは ``tmp`` が ``eax`` レジスタを表します。
 
 
-```Unix Assembly
+```asm
 (つづき）
 
 # a = a + tmp
@@ -352,7 +352,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 これが生成したアセンブリ言語のコードです：
 
-```Unix Assembly
+```asm
 	movl	$4, -4(%ebp)
 	movl	$8, -8(%ebp)
 	movl	-8(%ebp), %eax
@@ -367,7 +367,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # a = 4
 	movl	$4, -4(%ebp)
 
@@ -424,7 +424,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 そして生成したアセンブリ言語のコードが、こちら：
 
-```Unix Assembly
+```asm
 	movl	$4, -4(%ebp)
 	movl	$8, -8(%ebp)
 	movl	$0, -12(%ebp)
@@ -450,7 +450,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # a = 4
 	movl	$4, -4(%ebp)
 
@@ -513,7 +513,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 そして生成したアセンブリ言語のコードが、こちら：
 
-```Unix Assembly
+```asm
 	movl	$4, -4(%ebp)
 	movl	$8, -8(%ebp)
 	movl	$0, -12(%ebp)
@@ -546,7 +546,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # a = 4
 # b = 8
 # d = 0
@@ -622,7 +622,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 これが生成したアセンブリ言語のコードです：
 
-```Unix Assembly
+```asm
 	movl	$4, -4(%ebp)
 	movl	$8, -8(%ebp)
 	movl	$0, -12(%ebp)
@@ -651,7 +651,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
 
-```Unix Assembly
+```asm
 # a = 4
 # b = 8
 # d = 0
@@ -707,7 +707,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 これが生成したアセンブリ言語のコードです：
 
-```Unix Assembly
+```asm
 	movl	$4, -4(%ebp)
 	movl	$8, -8(%ebp)
 	movl	$0, -12(%ebp)
@@ -754,7 +754,7 @@ void f(void)
 
 これが生成したアセンブリ言語のコードです：
 
-```Unix Assembly
+```asm
 	movl	$globalVar, -4(%ebp)
 	movl	-4(%ebp), %eax
 	movl	$100, (%eax)
@@ -774,7 +774,7 @@ void f(void)
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # ptr = &globalVar
 	movl	$globalVar, -4(%ebp)
 
@@ -818,7 +818,7 @@ void f(void)
 
 これが生成したアセンブリ言語のコードです：
 
-```Unix Assembly
+```asm
 	movl	$12, globalVar+8
 	movl	$3, -24(%ebp)
 	movl	$18, -8(%ebp)
@@ -841,7 +841,7 @@ void f(void)
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # globalVar[2] = 12
 # (globalVar + 8) は globalVar 変数の先頭から 8バイト目を示す
 # この配列の要素は 4バイトなので三番目の要素はバイト・オフセット 8から始まる
@@ -882,7 +882,7 @@ void f(void)
 
 これが生成したアセンブリ言語のコードです：
 
-```Unix Assembly
+```asm
 	movl	$globalVar, -8(%ebp)
 	movl	-8(%ebp), %eax
     addl    $16, %eax
@@ -901,7 +901,7 @@ void f(void)
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # ptr = globalVar
 	movl	$globalVar, -8(%ebp)
 
@@ -940,7 +940,7 @@ void main(void)
 
 これが生成したアセンブリ言語のコードです：
 
-```Unix Assembly
+```asm
 	movl	$fun1, 12(%esp)
 	movl	12(%esp), %eax
 	call	*%eax
@@ -956,7 +956,7 @@ void main(void)
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
-```Unix Assembly
+```asm
 # fptr = fun1
 	movl	$fun1, 12(%esp)
 
