@@ -281,9 +281,9 @@ fun:
 スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
 
 ```
-    a => ebp - 4 => -4 (%ebp)
-    b => ebp - 8 => -8 (%ebp)
-    c => ebp - 12 => -12 (%ebp)
+    a => (ebp -  4) => -4(%ebp)
+    b => (ebp -  8) => -8(%ebp)
+    c => (ebp - 12) => -12(%ebp)
 ```
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
@@ -342,10 +342,10 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
 
 ```
-    a => -4 (%ebp)
-    b => -8 (%ebp)
-    c => -12 (%ebp)
-    d => -16 (%ebp)
+    a => (ebp -  4) => -4(%ebp)
+    b => (ebp -  8) => -8(%ebp)
+    c => (ebp - 12) => -12(%ebp)
+    d => (ebp - 16) => -16(%ebp)
 ```
 
 一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。
@@ -441,9 +441,9 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
 
 ```
-    a => -4 (%ebp)
-    b => -8 (%ebp)
-    d => -12 (%ebp)
+    a => (ebp -  4) => -4(%ebp)
+    b => (ebp -  8) => -8(%ebp)
+    d => (ebp - 12) => -12(%ebp)
 ```
 
 一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。
@@ -463,10 +463,10 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 # tmp = a
 	movl	-4(%ebp), %eax
 
-# b と tmp (a) を比較する
+# b と tmp を比較する
 	cmpl	-8(%ebp), %eax
 
-# もし tmp (a) が b よりも小さいかまたは等しい場合は
+# もし tmp が b よりも小さいかまたは等しい場合は
 # ラベル L2 （C言語のコードで言うと else ブロック）へジャンプする
 	jle	.L2
 
@@ -537,9 +537,9 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
 
 ```
-    a => -4 (%ebp)
-    b => -8 (%ebp)
-    d => -12 (%ebp)
+    a => (ebp -  4) => -4(%ebp)
+    b => (ebp -  8) => -8(%ebp)
+    d => (ebp - 12) => -12(%ebp)
 ```
 
 一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。
@@ -641,9 +641,9 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
 
 ```
-    a => -4 (%ebp)
-    b => -8 (%ebp)
-    d => -12 (%ebp)
+    a => (ebp -  4) => -4(%ebp)
+    b => (ebp -  8) => -8(%ebp)
+    d => (ebp - 12) => -12(%ebp)
 ```
 
 一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。
@@ -652,38 +652,322 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 
 ```Unix Assembly
-#
-#
-#
+# a = 4
+# b = 8
+# d = 0
 	movl	$4, -4(%ebp)
 	movl	$8, -8(%ebp)
 	movl	$0, -12(%ebp)
 
-#
+# ラベル L2 へジャンプする
+# WHILE ループの条件をラベル L2 で評価する
 	jmp	.L2
 
-#
+# WHILE 文の中にあるループブロックの先頭
 .L3:
 
-#
+# tmp = a
 	movl	-4(%ebp), %eax
-#
+
+# tmp = tmp + 2
 	addl	$2, %eax
 
-#
+# d = tmp
 	movl	%eax, -12(%ebp)
 
-#
+# b = b - 1
 	subl	$1, -8(%ebp)
 
-#
+# WHILE 文を開始したら、ここで条件を評価する
 .L2:
 
-#
+# tmp = b
 	movl	-8(%ebp), %eax
 
-#
+# a と tmp を比較する
 	cmpl	-4(%ebp), %eax
-#
+
+# tmp が a よりも大きい場合はループのブロック（ラベル L3）へジャンプする
 	jg	.L3
 ```
+
+#### <u>FOR ループ</u>
+
+この C言語のコードを例にとります：
+
+```C
+	int a = 4;
+	int b = 8;
+	int d = 0;
+
+	for (b = 9; b > a; b--) {
+		d = a + 2;
+	}
+```
+
+これが生成したアセンブリ言語のコードです：
+
+```Unix Assembly
+	movl	$4, -4(%ebp)
+	movl	$8, -8(%ebp)
+	movl	$0, -12(%ebp)
+	movl	$9, -8(%ebp)
+	jmp	.L2
+.L3:
+	movl	-4(%ebp), %eax
+	addl	$2, %eax
+	movl	%eax, -12(%ebp)
+	subl	$1, -8(%ebp)
+.L2:
+	movl	-8(%ebp), %eax
+	cmpl	-4(%ebp), %eax
+	jg	.L3
+```
+
+生成したアセンブリ言語のコードの大部分は WHILE ループのそれと同じです。
+ここには注目したい点を二つ紹介します：
+
+* ループの初期条件をセットする命令が IF ブロック（比較命令）のコードよりも前に生成されている
+
+* ループを更新していく命令が IF ブロック（比較命令）のコードの最後に生成されている
+
+---
+
+## ポインタの逆参照
+
+この C言語のコードを例にとります：
+
+```C
+// これはグローバル宣言
+int globalVar;
+
+void f(void)
+{
+	int b;
+	int *ptr;
+
+	ptr = &globalVar;
+	*ptr = 100;
+	b = *ptr;
+}
+```
+
+これが生成したアセンブリ言語のコードです：
+
+```Unix Assembly
+	movl	$globalVar, -4(%ebp)
+	movl	-4(%ebp), %eax
+	movl	$100, (%eax)
+	movl	-4(%ebp), %eax
+	movl	(%eax), %eax
+	movl	%eax, -8(%ebp)
+```
+
+スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
+
+```
+    ptr => (ebp - 4) => -4(%ebp)
+    b   => (ebp - 8) => -8(%ebp)
+```
+
+一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。
+
+生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
+
+```Unix Assembly
+# ptr = &globalVar
+	movl	$globalVar, -4(%ebp)
+
+# tmp = ptr
+	movl	-4(%ebp), %eax
+
+# *tmp = 100
+	movl	$100, (%eax)
+
+# tmp = ptr
+	movl	-4(%ebp), %eax
+
+# tmp = *tmp
+	movl	(%eax), %eax
+
+# b = tmp
+	movl	%eax, -8(%ebp)
+```
+
+---
+
+## 配列の操作
+
+この C言語のコードを例にとります：
+
+```C
+// これはグローバル宣言
+int globalVar[5];
+
+void f(void)
+{
+	int b;
+	int localArr[5];
+
+	globalVar[2] = 12;
+	localArr[0] = 3;
+	localArr[4] = 18;
+	b = localArr[4];
+}
+```
+
+これが生成したアセンブリ言語のコードです：
+
+```Unix Assembly
+	movl	$12, globalVar+8
+	movl	$3, -24(%ebp)
+	movl	$18, -8(%ebp)
+	movl	-8(%ebp), %eax
+	movl	%eax, -4(%ebp)
+```
+
+スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
+
+```
+    b        => (ebp -  4) => -4(%ebp)
+    localArr => (ebp - 24) から (ebp - 4) => -24(%ebp) から -4(%ebp) [但し -4(%ebp) が指すメモリは含まれない]
+
+         配列 localArr のサイズは 5
+         この配列の１要素のサイズは 4バイト
+         従って配列 localArr[] は合計 20バイト
+```
+
+一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。
+
+生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
+
+```Unix Assembly
+# globalVar[2] = 12
+# (globalVar + 8) は globalVar 変数の先頭から 8バイト目を示す
+# この配列の要素は 4バイトなので三番目の要素はバイト・オフセット 8から始まる
+	movl	$12, globalVar+8
+
+# localArr[0] =3
+# localArr 変数は -24(%ebp) から始まるので localArr[0] のバイト・オフセットは 0
+	movl	$3, -24(%ebp)
+
+# localArr[4] = 18
+# localArr[4] はバイトオフセット 16（-24 + 16 = -8）
+	movl	$18, -8(%ebp)
+
+# tmp = localArr[4]
+	movl	-8(%ebp), %eax
+
+# b = tmp
+	movl	%eax, -4(%ebp)
+```
+
+### ポインタを使った配列の操作
+
+
+この C言語のコードを例にとります：
+
+```C
+// これはグローバル宣言
+int globalVar[5];
+
+void f(void)
+{
+	int b;
+	int *ptr = globalVar;
+
+	b = ptr[4];
+}
+```
+
+これが生成したアセンブリ言語のコードです：
+
+```Unix Assembly
+	movl	$globalVar, -8(%ebp)
+	movl	-8(%ebp), %eax
+    addl    $16, %eax
+	movl	(%eax), %eax
+	movl	%eax, -4(%ebp)
+```
+
+スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
+
+```
+    b   => (ebp - 4) => -4(%ebp)
+    ptr => (ebp - 8) => -8(%ebp)
+```
+
+一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。
+
+生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
+
+```Unix Assembly
+# ptr = globalVar
+	movl	$globalVar, -8(%ebp)
+
+# tmp = ptr
+    movl	-8(%ebp), %eax
+
+# tmp = tmp + 16
+# 現在 'tmp' にはポインタが格納されているので、次の命令はそのポインタを 16バイト移動する
+    addl    $16, %eax
+
+# tmp = *tmp
+    movl	(%eax), %eax
+
+# b = tmp
+    movl	%eax, -4(%ebp)
+```
+
+---
+
+## 関数ポインタの操作
+
+この C言語のコードを例にとります：
+
+```C
+// これはグローバル宣言
+void fun1(void)
+{
+}
+
+void main(void)
+{
+	void (*fptr)() = fun1;
+	fptr();
+}
+```
+
+これが生成したアセンブリ言語のコードです：
+
+```Unix Assembly
+	movl	$fun1, 12(%esp)
+	movl	12(%esp), %eax
+	call	*%eax
+```
+
+スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
+
+```
+    fptr => (ebp - 12) => -12(%ebp)
+```
+
+一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。
+
+生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
+
+```Unix Assembly
+# fptr = fun1
+	movl	$fun1, 12(%esp)
+
+# tmp = fptr
+    movl	12(%esp), %eax
+
+# ポインタを介して関数 tmp() を呼び出す
+    call	*%eax
+```
+
+**注記：**
+
+この例では ebp レジスタの代わりに esp レジスタを使ってローカル変数を参照しています。
+スタックにのせる際に esp レジスタを使うか、またはebp レジスタを使うかは使用するコンパイラ次第です。

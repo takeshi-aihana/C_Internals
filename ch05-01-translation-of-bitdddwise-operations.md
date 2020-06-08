@@ -12,10 +12,10 @@
 スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
 
 ```
-    a => -4 (%ebp)
-    b => -8 (%ebp)
-    c => -12 (%ebp)
-    d => -16 (%ebp)
+    a => (ebp -  4) => -4(%ebp)
+    b => (ebp -  8) => -8(%ebp)
+    c => (ebp - 12) => -12(%ebp)
+    d => (ebp - 16) => -16(%ebp)
 ```
 
 一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。

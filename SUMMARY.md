@@ -22,11 +22,11 @@
 
 - [配列の操作](/ch09-01-array-indexing.md)
 
-- [関数ポインタ](/ch10-01-function-pointer.md)
+- [関数ポインタの操作](/ch10-01-function-pointer.md)
 
 - [関数の呼び出し](/ch11-01-function-call.md)
 
-- [引数渡し](/ch12-01-parameter-passing.md)
+- [引数渡しの処理](/ch12-01-parameter-passing.md)
 
 - [関数の返り値](/ch13-01-returning-value-from-function.md)
 
