@@ -1292,3 +1292,60 @@ subl	$16, %esp
 	leave
 	ret
 ```
+
+---
+
+## 構造体のメモリの確保
+
+コードの中で、なにか構造体のオブジェクトを生成すると、コンパイラは「切れ目のない」連続したメモリをその構造体のデータ・メンバのために確保します。
+確保するメモリのサイズは、最低でも全てのデータメンバのサイズの合計です。
+その際にコンパイラは「パディング」を使用して、二つのデータ・メンバの間に未使用の領域を生成することができます。
+この「パディング」は構造体のメンバに高速でアクセスできるようにデータ・メンバを配置するために行われるものです。
+但し、パディングの動きを制御し、コンパイラを停止することで余分な領域を生成できます。
+構造体のデータ・メンバは構造体のベースアドレスと構造体内でのオフセットを使ってアクセスします。
+
+それでは、これを例を使って見てみることにしましょう。
+
+C言語のコード：
+
+```C
+struct data_struct
+{
+	int a;
+	int b;
+};
+
+struct data_struct global_data;
+
+int main(void)
+{
+	struct data_struct local_data;
+	global_data.a = 10;
+	global_data.b = 15;
+
+	local_data.a = 25;
+	local_data.b = 20;
+
+	return 0;
+}
+```
+
+これが生成したアセンブリ言語のコードです：
+
+```asm
+	.comm	global_data,8,4
+	.text
+	.globl	main
+main:
+	pushl	%ebp
+	movl	%esp, %ebp
+	subl	$16, %esp
+	movl	$10, global_data
+	movl	$15, global_data+4
+	movl	$25, -8(%ebp)
+	movl	$20, -4(%ebp)
+	movl	$0, %eax
+	leave
+	ret
+```
+
