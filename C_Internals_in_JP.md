@@ -1454,3 +1454,118 @@ int main (void)
 	return 0;
 }
 ```
+
+これが生成したアセンブリ言語のコードです：
+
+```asm
+	.text
+	.globl	fun
+fun:
+	pushl	%ebp
+	movl	%esp, %ebp
+	subl	$16, %esp
+	movl	$20, -8(%ebp)
+	movl	$25, -4(%ebp)
+	movl	8(%ebp), %ecx
+	movl	-8(%ebp), %eax
+	movl	-4(%ebp), %edx
+	movl	%eax, (%ecx)
+	movl	%edx, 4(%ecx)
+	movl	8(%ebp), %eax
+	leave
+	ret	$4
+	.globl	main
+main:
+	pushl	%ebp
+	movl	%esp, %ebp
+	subl	$20, %esp
+	leal	-8(%ebp), %eax
+	movl	%eax, (%esp)
+	call	fun
+	subl	$4, %esp
+	movl	$0, %eax
+	leave
+	ret
+```
+
+このアセンブリ言語のコードと等価なC言語のプログラムを次のように作成し直すこともできます：
+
+```C
+void
+fun(struct data_struct *ptr)
+{
+	struct data_struct data;
+	data.a = 20;
+	data.b = 25;
+    ptr->a = data.a;
+    ptr->b = data.b;
+	return data;
+}
+
+int main (void)
+{
+	struct data_struct data;
+    fun(&data);
+	return 0;
+}
+```
+
+コンパイラは返り値である ``data`` の関数にポインタを一つ渡します。
+ここで注意したい点が二つあります。
+
+* 構造体を返す関数の型は ``void`` とする。
+すなわち ``eax`` レジスタ経由では構造体を返さない。
+
+* この関数は、最初の C言語のプログラムで返していた構造体を指すポインタ型を引数として受け取る。
+
+---
+
+## C言語とアセンブリ言語の連携
+
+### アセンブリ言語で定義したものをC言語で使う
+
+これが関数と変数を実装したアセンブリ言語のコードです：
+
+```asm
+# asm_var と言うグローバル変数を定義して公開することで、それを C言語のコードから利用できるようになる
+.data
+.global asm_var
+asm_var:
+.long
+
+# asm_fun() という関数を定義して公開することで、それを C言語のコードから利用できるようになる
+.text
+.global asm_fun
+asm_fun:
+    ret;
+```
+
+そして C言語のコード：
+
+```C
+void asm_fun();
+extern int asm_var;
+
+int x;
+
+void
+main (void)
+{
+	asm_fun();
+
+	asm_var++;
+}
+```
+
+理解すべきポイント：
+
+* アセンブリ言語のコードで C言語のプログラムで利用することが可能な変数や関数を定義できる
+* アセンブリ言語のコードで C言語のプログラムで利用することが可能な変数や関数を「公開」すること。
+この例では ``.global`` 属性を使用し ``asm_var`` と ``asm_fun()`` を公開している。
+* C言語のコードは実際に使用する前に公開されている変数や関数を宣言しておく。
+これらの宣言はヘッダファイルの中でやっていることに似ている。
+宣言は C言語のソースファイルか、またはヘッダファイルの中で行う。
+
+
+### C言語で定義したものをアセンブリ言語で使う
+
