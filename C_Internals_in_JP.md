@@ -1651,7 +1651,7 @@ fun(void)
 
 int main (void)
 {
-;	fun();
+	fun();
 	return 0;
 }
 ```
