@@ -74,7 +74,7 @@ i386 アーキテクチャには一つの命令に対して指定できるメモ
 
 ---
 
-* [目次](/SUMMARY.md)
+* [目次](/SUMMARY.md#C言語インターナル)
 
 * [前へ](/ch03-01-stack-and-local-variables.md)
 

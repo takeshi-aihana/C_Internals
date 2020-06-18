@@ -38,7 +38,7 @@ $ objdump -h a.out
 
 ---
 
-* [目次](/SUMMARY.md)
+* [目次](/SUMMARY.md#C言語インターナル)
 
 * [前へ](/ch15-01-mixing-c-and-assenbly.md)
 

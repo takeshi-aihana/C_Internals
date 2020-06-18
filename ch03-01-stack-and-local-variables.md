@@ -122,7 +122,7 @@ fun:
 
 ---
 
-* [目次](/SUMMARY.md)
+* [目次](/SUMMARY.md#C言語インターナル)
 
 * [前へ](/ch02-01-program-structure.md)
 

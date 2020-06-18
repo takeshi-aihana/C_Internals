@@ -221,7 +221,7 @@ int main (void)
 
 ---
 
-* [目次](/SUMMARY.md)
+* [目次](/SUMMARY.md#C言語インターナル)
 
 * [前へ](/ch13-01-returning-value-from-function.md)
 

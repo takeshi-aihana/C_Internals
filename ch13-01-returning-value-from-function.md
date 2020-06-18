@@ -100,7 +100,7 @@ subl	$16, %esp
 
 ---
 
-* [目次](/SUMMARY.md)
+* [目次](/SUMMARY.md#C言語インターナル)
 
 * [前へ](/ch12-01-parameter-passing.md)
 

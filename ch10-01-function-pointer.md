@@ -51,7 +51,7 @@ void main(void)
 
 ---
 
-* [目次](/SUMMARY.md)
+* [目次](/SUMMARY.md#C言語インターナル)
 
 * [前へ](/ch09-01-array-indexing.md)
 

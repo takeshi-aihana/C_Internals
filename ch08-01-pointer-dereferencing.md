@@ -61,7 +61,7 @@ void f(void)
 
 ---
 
-* [目次](/SUMMARY.md)
+* [目次](/SUMMARY.md#C言語インターナル)
 
 * [前へ](/ch07-01-translation-of-loop.md)
 

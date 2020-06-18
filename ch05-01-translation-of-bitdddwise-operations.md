@@ -73,7 +73,7 @@
 
 ---
 
-* [目次](/SUMMARY.md)
+* [目次](/SUMMARY.md#C言語インターナル)
 
 * [前へ](/ch04-01-translation-of-arithmetic-operations.md)
 

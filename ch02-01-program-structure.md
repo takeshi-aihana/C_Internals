@@ -87,7 +87,7 @@ main:
 
 ---
 
-* [目次](/SUMMARY.md)
+* [目次](/SUMMARY.md#C言語インターナル)
 
 * [前へ](/ch01-01-introduction.md)
 

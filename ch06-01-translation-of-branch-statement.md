@@ -198,7 +198,7 @@
 
 ---
 
-* [目次](/SUMMARY.md)
+* [目次](/SUMMARY.md#C言語インターナル)
 
 * [前へ](/ch05-01-translation-of-bitdddwise-operations.md)
 
