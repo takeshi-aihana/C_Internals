@@ -223,6 +223,6 @@ int main (void)
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch13-01-returning-value-from-function.md)
+* [前へ](/ch13-01-returning-value-from-function.md#関数の返り値)
 
-* [次へ](/ch15-01-mixing-c-and-assenbly.md)
+* [次へ](/ch15-01-mixing-c-and-assenbly.md#C言語とアセンブリ言語の連携)

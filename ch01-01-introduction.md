@@ -36,5 +36,5 @@ C言語と少しだけアセンブリ言語
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [次へ](/ch02-01-program-structure.md)
+* [次へ](/ch02-01-program-structure.md#プログラムの構造)
 

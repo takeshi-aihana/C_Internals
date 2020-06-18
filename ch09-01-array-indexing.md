@@ -125,6 +125,6 @@ void f(void)
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch08-01-pointer-dereferencing.md)
+* [前へ](/ch08-01-pointer-dereferencing.md#ポインタの逆参照)
 
-* [次へ](/ch10-01-function-pointer.md)
+* [次へ](/ch10-01-function-pointer.md#関数ポインタの操作)

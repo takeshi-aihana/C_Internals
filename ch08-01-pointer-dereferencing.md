@@ -63,6 +63,6 @@ void f(void)
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch07-01-translation-of-loop.md)
+* [前へ](/ch07-01-translation-of-loop.md#ループ処理の翻訳)
 
-* [次へ](/ch09-01-array-indexing.md)
+* [次へ](/ch09-01-array-indexing.md#配列の操作)

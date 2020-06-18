@@ -124,6 +124,6 @@ fun:
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch02-01-program-structure.md)
+* [前へ](/ch02-01-program-structure.md#プログラムの構造)
 
-* [次へ](/ch04-01-translation-of-arithmetic-operations.md)
+* [次へ](/ch04-01-translation-of-arithmetic-operations.md#算術演算の翻訳)

@@ -86,6 +86,6 @@ main:
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch10-01-function-pointer.md)
+* [前へ](/ch10-01-function-pointer.md#関数ポインタの操作)
 
-* [次へ](/ch12-01-parameter-passing.md)
+* [次へ](/ch12-01-parameter-passing.md#引数渡しの処理)

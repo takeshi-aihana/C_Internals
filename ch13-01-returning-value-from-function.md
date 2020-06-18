@@ -102,6 +102,6 @@ subl	$16, %esp
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch12-01-parameter-passing.md)
+* [前へ](/ch12-01-parameter-passing.md#引数渡しの処理)
 
-* [次へ](/ch14-01-memory-allocation-for-structure.md)
+* [次へ](/ch14-01-memory-allocation-for-structure.md#構造体のメモリの確保)

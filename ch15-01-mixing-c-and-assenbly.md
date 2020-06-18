@@ -112,7 +112,6 @@ main:
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch14-01-memory-allocation-for-structure.md)
+* [前へ](/ch14-01-memory-allocation-for-structure.md#構造体のメモリの確保)
 
-* [次へ](/ch16-01-miscellaneous.md)
-
+* [次へ](/ch16-01-miscellaneous.md#その他)

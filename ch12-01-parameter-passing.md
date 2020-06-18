@@ -132,6 +132,6 @@ main:
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch11-01-function-call.md)
+* [前へ](/ch11-01-function-call.md#関数の呼び出し)
 
-* [次へ](/ch13-01-returning-value-from-function.md)
+* [次へ](/ch13-01-returning-value-from-function.md#関数の返り値)

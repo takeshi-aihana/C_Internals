@@ -53,6 +53,6 @@ void main(void)
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch09-01-array-indexing.md)
+* [前へ](/ch09-01-array-indexing.md#配列の操作)
 
-* [次へ](/ch11-01-function-call.md)
+* [次へ](/ch11-01-function-call.md#関数の呼び出し)

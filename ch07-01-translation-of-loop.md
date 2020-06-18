@@ -130,6 +130,6 @@
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch06-01-translation-of-branch-statement.md)
+* [前へ](/ch06-01-translation-of-branch-statement.md#分岐処理の翻訳)
 
-* [次へ](/ch08-01-pointer-dereferencing.md)
+* [次へ](/ch08-01-pointer-dereferencing.md#ポインタの逆参照)

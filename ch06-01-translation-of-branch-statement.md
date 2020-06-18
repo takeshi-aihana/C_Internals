@@ -200,6 +200,6 @@
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch05-01-translation-of-bitdddwise-operations.md)
+* [前へ](/ch05-01-translation-of-bitdddwise-operations.md#ビット演算の翻訳)
 
-* [次へ](/ch07-01-translation-of-loop.md)
+* [次へ](/ch07-01-translation-of-loop.md#ループ処理の翻訳)

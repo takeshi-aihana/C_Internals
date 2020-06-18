@@ -30,4 +30,4 @@ Gmail ID の rajeevku02 で連絡がとれます。
 
 * [目次](/SUMMARY.md#C言語インターナル)
 
-* [前へ](/ch16-01-miscellaneous.md)
+* [前へ](/ch16-01-miscellaneous.md#その他)
