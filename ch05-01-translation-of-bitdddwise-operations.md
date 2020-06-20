@@ -9,7 +9,7 @@
         int d = b & c;
 ```
 
-スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
+スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md#スタックとローカル変数)で説明しました）：
 
 ```
     a => (ebp -  4) => -4(%ebp)
@@ -18,7 +18,7 @@
     d => (ebp - 16) => -16(%ebp)
 ```
 
-一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。
+一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#算術演算の翻訳)で説明しました。
 
 これが生成したアセンブリ言語のコードです：
 

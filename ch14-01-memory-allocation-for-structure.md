@@ -74,7 +74,7 @@ main:
 ```
 
 ``local_data`` はスタックの -8(%ebp) から %(%ebp) のメモリ空間に確保されます。
-ローカル変数の確保については[ここ](/ch03-01-stack-and-local-variables.md)を参照して下さい。
+ローカル変数の確保については[ここ](/ch03-01-stack-and-local-variables.md#スタックとローカル変数)を参照して下さい。
 
 
 ### 構造体とパディング

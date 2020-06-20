@@ -28,14 +28,14 @@ void f(void)
 	movl	%eax, -8(%ebp)
 ```
 
-スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md)で説明しました）：
+スタックにおけるローカル変数の位置はそれぞれ次のとおりです（ローカル変数については[ここ](/ch03-01-stack-and-local-variables.md#スタックとローカル変数)で説明しました）：
 
 ```
     ptr => (ebp - 4) => -4(%ebp)
     b   => (ebp - 8) => -8(%ebp)
 ```
 
-一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#tempVaribaleUsage)で説明しました。
+一時的な保管場所としてのレジスタの使い方については[ここ](/ch04-01-translation-of-arithmetic-operations.md#算術演算の翻訳)で説明しました。
 
 生成したアセンブリ言語のコードにコメントを入れたものが、こちらです：
 
